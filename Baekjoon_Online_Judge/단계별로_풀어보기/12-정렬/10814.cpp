@@ -1,5 +1,5 @@
 //
-//  main.cpp
+//  10814.cpp
 //  Problem_solving
 //
 //  Created by Seokhwan Kwon on 2021/02/03.
@@ -12,3 +12,4 @@ int main(int argc, const char * argv[]) {
     std::cout << "Hello, World!\n";
     return 0;
 }
+
