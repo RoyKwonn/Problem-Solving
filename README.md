@@ -9,7 +9,7 @@
 
 - C
 - CPP
-- Python
+- Python 3.8
 
 ## Email
 
