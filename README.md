@@ -23,6 +23,5 @@
 - Algorithm
     - [Baekjoon Online Judge](https://www.acmicpc.net/) 
         - 단계별로 풀어보기
-            - 17-스택
-                -1874.cpp
+            - 17-스택-1874.cpp
 
