@@ -5,6 +5,9 @@
 //  Created by Seokhwan Kwon on 2021/02/06.
 //
 
+
+// https://cryptosalamander.tistory.com/58
+
 #include <iostream>
 #define MAX 15
 using namespace std;
@@ -35,6 +38,8 @@ void nqueen(int x)
         }
     }
 }
+
+
 int main() {
     cin >> N;
     nqueen(0);
