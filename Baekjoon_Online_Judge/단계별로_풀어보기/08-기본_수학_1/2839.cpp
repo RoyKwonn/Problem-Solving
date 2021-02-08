@@ -14,7 +14,7 @@ int main(int argc, const char * argv[])
     cin.tie(NULL);
     cout.tie(NULL);
     
-    int N, m, mod, result;
+    int N, m, mod = 0, result;
     cin >> N;
     m = N / 5;      // m : 5kg 봉지의 사용 최대 개수
     
