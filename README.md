@@ -24,6 +24,7 @@
     - [Baekjoon Online Judge](https://www.acmicpc.net/) 
         - 단계별로 풀어보기
             - 17-스택-1874.cpp
+            - 08-기본_수학_1-2839.cpp
         - solved.ac티어
             - Gold-14502.cpp
             
