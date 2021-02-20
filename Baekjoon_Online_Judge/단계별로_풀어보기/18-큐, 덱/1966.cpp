@@ -12,6 +12,14 @@
 
 using namespace std;
 
+// 1. Queue의 가장 앞에 있는 문서의 '중요도'를 확인한다.
+// 2. 나머지 문서들 중 현재 문서보다 중요도가 높은 문서가 하나라도 있다면, 이 문서를 인쇄하지 않고 Queue의 가장 되에 재배치 한다. 그렇지 않다면 바로 인쇄를 한다.
+
+// This is 우선순위 큐
+
+// A2 B1 C4 D3
+
+
 int main(int argc, const char * argv[])
 {
     int t, n, m; // n=문서의 수 // m=궁금한 문서가 Queue의 어느 위치에 있는지
