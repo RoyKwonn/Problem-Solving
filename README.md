@@ -1,7 +1,7 @@
-## LIST 
+## LIST
 
 
-- [Baekjoon Online Judge](https://www.acmicpc.net/) 
+- [Baekjoon Online Judge](https://www.acmicpc.net/)
     - 단계별로 풀어보기
         - [solved.ac티어](https://solved.ac/)
         - Gold
@@ -26,7 +26,7 @@
 ## 다시봐야할 문제
 
 - Algorithm
-    - [Baekjoon Online Judge](https://www.acmicpc.net/) 
+    - [Baekjoon Online Judge](https://www.acmicpc.net/)
         - 단계별로 풀어보기
             - 17-스택-1874
             - 08-기본_수학_1-2839
@@ -36,7 +36,7 @@
             - 08-기본_수학_1-1011
             - 09-기본_수학_2-4948
             - 18-큐, 덱-1966
-            
         - solved.ac티어
             - Gold-14502.cpp
-            
+    - [Python-for-coding-test](https://github.com/ndb796/python-for-coding-test)
+        - 3-Greddy
