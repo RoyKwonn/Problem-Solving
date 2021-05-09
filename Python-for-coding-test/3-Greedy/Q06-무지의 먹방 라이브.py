@@ -11,30 +11,73 @@
 # 만약 더 섭취해야 할 음식이 없다면 -1을 반환하면 됩니다.
 
 
+# import heapq
+#
+# def solution(food_times, k):
+#     # 전체 음식을 먹는 시간보다 k가 크거나 같다면 -1
+#     if sum(food_times) <= k:
+#         return -1
+#
+#     # 시간이 작은 음식부터 빼야 하므로 우선순위 큐를 이용
+#     q = []
+#     for i in range(len(food_times)):
+#         # (음식 시간, 음식 번호) 형태로 우선순위 큐에 삽입
+#         heapq.heappush(q, (food_times[i], i + 1))
+#
+#     sum_value = 0 # 먹기 위해 사용한 시간
+#     previous = 0 # 직전에 다 먹은 음식 시간
+#     length = len(food_times) # 남은 음식의 개수
+#
+#     # sum_value + (현재의 음식 시간 - 이전 음식 시간) * 현재 음식 개수와 k 비교
+#     while sum_value + ((q[0][0] - previous) * length) <= k:
+#         now = heapq.heappop(q)[0]
+#         sum_value += (now - previous) * length
+#         length -= 1 # 다 먹은 음식 제외
+#         previous = now # 이전 음식 시간 재설정
+#
+#     # 남은 음식 중에서 몇 번째 음식인지 확인하여 출력
+#     result = sorted(q, key=lambda x: x[1]) # 음식의 번호 기준으로 정렬
+#     return result[(k - sum_value) % length][1]
+
+
 import heapq
 
+
 def solution(food_times, k):
-    # 전체 음식을 먹는 시간보다 k가 크거나 같다면 -1
-    if sum(food_times) <= k:
-        return -1
+    n = len(food_times)  # 전체길이
+    pq = []  # 힙큐 넣을 곳
+    for i in range(n):  # 힙큐 넣어줌 ( 음식양, 번호 )
+        heapq.heappush(pq, (food_times[i], i + 1))
 
-    # 시간이 작은 음식부터 빼야 하므로 우선순위 큐를 이용
-    q = []
-    for i in range(len(food_times)):
-        # (음식 시간, 음식 번호) 형태로 우선순위 큐에 삽입
-        heapq.heappush(q, (food_times[i], i + 1))
+    pre_food = 0  # 가장 밑바닥
+    min_food = pq[0][0]  # 현재 음식중 가장 작은 녀석
 
-    sum_value = 0 # 먹기 위해 사용한 시간
-    previous = 0 # 직전에 다 먹은 음식 시간
-    length = len(food_times) # 남은 음식의 개수
+    # 사이클 돌면서 k에서 시간을 계속 빼준다.
+    while True:
+        # 사이클 돌았을 때 k 가 음수가 되면 빼주지 말고 나오자
+        if k - (min_food - pre_food) * n < 0:
+            break
 
-    # sum_value + (현재의 음식 시간 - 이전 음식 시간) * 현재 음식 개수와 k 비교
-    while sum_value + ((q[0][0] - previous) * length) <= k:
-        now = heapq.heappop(q)[0]
-        sum_value += (now - previous) * length
-        length -= 1 # 다 먹은 음식 제외
-        previous = now # 이전 음식 시간 재설정
+        # 아니라면 k 빼주고
+        k -= (min_food - pre_food) * n
 
-    # 남은 음식 중에서 몇 번째 음식인지 확인하여 출력
-    result = sorted(q, key=lambda x: x[1]) # 음식의 번호 기준으로 정렬
-    return result[(k - sum_value) % length][1]
+        # 힙큐에서도 그 음식을 빼준다.
+        heapq.heappop(pq)
+        pre_food = min_food  # 바닥은 방금 그 음식의 양이다.
+        n -= 1  # 전체 길이도 하나 빼준다.
+
+        # 만약 다 먹었는데도 k가 남아있다면
+        # 음식이 부족한 상태이므로
+        if not pq:
+            return -1
+
+        # 이것을 나중에 해주는 이유는 위에서 비어있을 경우 인덱스 에러가 나기 때문
+        min_food = pq[0][0]
+
+    # 전체 길이보다 남은 초가 더 많을 수 있으므로
+    # 초를 길이로 나눈 나머지가 답이다.
+    idx = k % n
+    # 다시 번호 순으로 정렬 해주고
+    pq.sort(key=lambda x: x[1])
+    answer = pq[idx][1]
+    return answer
