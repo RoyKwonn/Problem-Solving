@@ -2,7 +2,6 @@
 # 0은 빈칸, 1은 벽, 2는 바이러스가 있는 곳
 
 from sys import stdin
-from collections import deque
 
 n, m = map(int, stdin.readline().split())
 data = [list(map(int, stdin.readline().split())) for _ in range(n)]
