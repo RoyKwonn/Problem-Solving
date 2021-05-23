@@ -7,13 +7,16 @@ from collections import deque
 
 def get_next_pos(pos, board):
     next_pos = [] # 반환 결과 (이동 가능한 위치들)
+
     pos = list(pos) # 현재 위치 정보를 리스트로 변환 (집합 → 리스트)
+    # 초기 위치
     pos1_x, pos1_y, pos2_x, pos2_y = pos[0][0], pos[0][1], pos[1][0], pos[1][1]
+
     # (상, 하, 좌, 우)로 이동하는 경우에 대해서 처리
-    dx = [-1, 1, 0, 0]
-    dy = [0, 0, -1, 1]
-    for i in range(4):
-        pos1_next_x, pos1_next_y, pos2_next_x, pos2_next_y = pos1_x + dx[i], pos1_y + dy[i], pos2_x + dx[i], pos2_y + dy[i]
+    move = [[-1,0],[1,0],[0,-1],[0,1]]
+
+    for dx, dy in move: # 두개의 점에 대해서 이동한다.
+        pos1_next_x, pos1_next_y, pos2_next_x, pos2_next_y = pos1_x + dx, pos1_y + dy, pos2_x + dx, pos2_y + dy
         # 이동하고자 하는 두 칸이 모두 비어 있다면
         if board[pos1_next_x][pos1_next_y] == 0 and board[pos2_next_x][pos2_next_y] == 0:
             next_pos.append({(pos1_next_x, pos1_next_y), (pos2_next_x, pos2_next_y)})
@@ -33,18 +36,29 @@ def get_next_pos(pos, board):
     return next_pos
 
 def solution(board):
-    # 맵의 외곽에 벽을 두는 형태로 맵 변형
+    # 1. 맵의 외곽에 벽을 두는 형태로 맵 변형
+
+    # 맵의 크기를 잡는다.
     n = len(board)
+
+    # (n+2) X (n+2) 크기의 맵을 만든 다음 전체 값을 1로 만들어준다.
     new_board = [[1] * (n + 2) for _ in range(n + 2)]
+
+    # 기존 맵을 옮겨준다.
     for i in range(n):
         for j in range(n):
             new_board[i + 1][j + 1] = board[i][j]
+
+
     # 너비 우선 탐색(BFS) 수행
     q = deque()
     visited = []
+
     pos = {(1, 1), (1, 2)} # 시작 위치 설정
-    q.append((pos, 0)) # 큐에 삽입한 뒤에
+    q.append((pos, 0)) # (위치, 비용)
+
     visited.append(pos) # 방문 처리
+
     # 큐가 빌 때까지 반복
     while q:
         pos, cost = q.popleft()
