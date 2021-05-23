@@ -23,13 +23,13 @@ def move_people():
         settable.append((y, x))
         ret = board[y][x]  # sum
 
-        for dy, dx in dirs:
+        for dy, dx in dirs: #
             ny, nx = y + dy, x + dx
             if is_rangeout(ny, nx) or visited[ny][nx]:
                 continue
             if not is_moveable((y, x), (ny, nx)):
                 continue
-            ret += get_area_sum(ny, nx, settable)
+            ret += get_area_sum(ny, nx, settable) # 재귀 호출을 하고 반복한다. 이유는 여러칸을 한 텀에 이동시키기 위함
         return ret
 
     def set_area(v, settable):
