@@ -15,6 +15,8 @@ for i in range(n):
     elif k == 0:
         break
 
+# print(sum(a)) # 배열 A의 모든 원소의 합을 출력
+
 result = 0
 for x in a:
     result += x
