@@ -5,7 +5,6 @@ def check_word(words, query, checks):
         if len(word) == len(query):
             for i in checks:
                 if word[i] != query[i]:
-                    # print(word + "는 " + query + "에 해당하지 않는다")
                     flag = 0
                     break
 
@@ -15,25 +14,25 @@ def check_word(words, query, checks):
     return cnt
 
 
-
-
 def solution(words, queries):
     answer = []
-
-    words.sort() # 정렬된 상태로 두자
+    # words.sort()
     for i in range(0, len(queries)):
-        print(queries[i])
         checks = [] # 와일드카드가 아닌 문자열
         for j in range(0, len(queries[i])):
             if queries[i][j] != '?':
-                # print(j, end=' ')
                 checks.append(j)
 
-        # print(checks)
         answer.append(check_word(words, queries[i], checks))
 
-    # print(answer)
     return answer
+
+
+
+
+
+
+
 
 
 
