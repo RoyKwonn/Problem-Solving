@@ -3,8 +3,8 @@
 
 n = int(input())
 
-cnt = 0
-i = 0
+# cnt = 0
+# i = 0
 
 dp = [0] * n
 
