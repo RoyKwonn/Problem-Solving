@@ -33,7 +33,7 @@ def topology_sort():
         now = q.popleft()
         result.append(now)
         # 해당 원소와 연결된 노드들의 진입차수에서 1 빼기
-        for i in graph[now]: ## 여기서 경유까지 고려하는지가 의문임
+        for i in graph[now]: ## (진입차수만 고려하기때문에 이게 성립한다)
             indegree[i] -= 1
             # 새롭게 진입차수가 0이 되는 노드를 큐에 삽입
             if indegree[i] == 0:
