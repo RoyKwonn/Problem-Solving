@@ -16,7 +16,8 @@ int main(int argc, const char * argv[]) {
         }
     }
     
-    printf("%d\n",  (cnt+1) / 2);
+    
+    printf("%d\n",  (cnt+1) / 2); // 미리 더해놓고 계산하는것이 편하네
     
     return 0;
 }
